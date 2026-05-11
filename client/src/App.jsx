@@ -124,7 +124,7 @@ export default function App() {
         formData.append("style", style);
         formData.append("subject", subject);
 
-        const response = await fetch("http://localhost:3001/api/upload-video", {
+        const response = await fetch("/api/upload-video", {
           method: "POST",
           body: formData,
         });
@@ -133,7 +133,7 @@ export default function App() {
         if (data.error) throw new Error(data.error.message);
         result = data.content?.map(b => b.text || "").join("\n") || "";
       } else {
-        const response = await fetch("http://localhost:3001/api/chat", {
+        const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
